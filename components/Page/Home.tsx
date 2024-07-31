@@ -9,6 +9,7 @@ const Home = ({navigation}) => {
   const placeholderColor = isDark ? '#FFFFFF' : '#000000';
 
   const [text, setText] = useState('');
+  const [press,setPress] = useState(0);
   return (
     <>
       <View style={[styles.container, {backgroundColor: backgroundColor}]}>
@@ -31,12 +32,31 @@ const Home = ({navigation}) => {
               {backgroundColor: uppperBarBackgroundColor, color: color},
             ]}
           />
-          <View style={styles.Btn}>
+<View style={styles.mulBtn}>
+
+          <View style={[styles.Btn,{width: '20%'}]}>
           <TouchableOpacity
-          onPress={()=>navigation.navigate('ViewDetails')}>
+          onPress={()=>setPress(1)}>
             <Text style={styles.text}>Check</Text>
           </TouchableOpacity>
           </View>
+{press?
+
+
+          <View style={[styles.Btn,{width: '35%'}]}>
+          <TouchableOpacity
+          onPress={()=>navigation.navigate('ViewDetails')}>
+            <Text style={styles.text}>View Details</Text>
+          </TouchableOpacity>
+          </View>:null
+}
+            </View>
+            {press?
+              <View style={styles.percent}>
+
+<Text style={styles.perTxt}>70%</Text>
+            </View>:null
+            }
         </View>
       </View>
     </>
@@ -77,7 +97,7 @@ const styles = StyleSheet.create({
   Btn: {
     margin: 20,
     height: 40,
-    width: '25%',
+    
     backgroundColor: '#4b81f4',
     borderRadius: 25,
     justifyContent: 'center',
@@ -88,4 +108,15 @@ const styles = StyleSheet.create({
     color: '#000000',
     fontSize:20
   },
+  mulBtn:{
+    flex:1,
+    flexDirection:'row',
+  },
+  percent:{
+    flex:2,
+  },
+  perTxt:{
+    color:'#0af047',
+    fontSize:200
+  }
 });
