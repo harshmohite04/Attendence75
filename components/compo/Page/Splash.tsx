@@ -1,26 +1,39 @@
-import { StyleSheet, Text, useColorScheme, View } from 'react-native'
-import React from 'react'
+import {
+  StyleSheet,
+  Text,
+  useColorScheme,
+  SafeAreaView,
+  View,
+} from 'react-native';
+import React from 'react';
 import Video from 'react-native-video';
 
-
 const Splash = ({navigation}) => {
-  const isDark = useColorScheme()=='dark';
-  const background = isDark?'#252525':'#FFFFFF';
+  const isDark = useColorScheme() == 'dark';
+  const backgroundColor = isDark ? '#252525' : '#FFFFFF';
 
-  setTimeout(()=>{
-    navigation.replace("Home")
-  },10000)
+  setTimeout(() => {
+    navigation.replace('Home');
+  }, 5000);
   return (
-    <View style={styles.container}>
-      <Text>Splash</Text>
-    </View>
-  )
-}
+    <SafeAreaView>
+      <View style={[styles.container, {backgroundColor: backgroundColor}]}>
+        <Video
+          style={styles.video}
+          source={require('../../../assets/video/teacher.mp4')}
+        />
+      </View>
+    </SafeAreaView>
+  );
+};
 
-export default Splash
+export default Splash;
 
 const styles = StyleSheet.create({
-  container:{
-    flex:1
-  }
-})
+  container: {
+    flex: 1,
+  },
+  video: {
+    flex: 1,
+  },
+});
