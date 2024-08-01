@@ -1,4 +1,4 @@
-import {StyleSheet, Text,TouchableOpacity,useColorScheme, View, TextInput} from 'react-native';
+import {StyleSheet, Text,TouchableOpacity,ScrollView,useColorScheme, View, TextInput} from 'react-native';
 import React, {useState} from 'react';
 
 const Home = ({navigation}) => {
@@ -10,9 +10,14 @@ const Home = ({navigation}) => {
 
   const [text, setText] = useState('');
   const [press,setPress] = useState(0);
+
+  const ran=Math.random(100);
+  console.log(ran)
   return (
     <>
-      <View style={[styles.container, {backgroundColor: backgroundColor}]}>
+
+<ScrollView style={[styles.container,{backgroundColor:backgroundColor}]}>
+
         <View
           style={[
             styles.uppperBar,
@@ -31,7 +36,7 @@ const Home = ({navigation}) => {
               styles.srn,
               {backgroundColor: uppperBarBackgroundColor, color: color},
             ]}
-          />
+            />
 <View style={styles.mulBtn}>
 
           <View style={[styles.Btn,{width: '20%'}]}>
@@ -43,7 +48,7 @@ const Home = ({navigation}) => {
 {press?
 
 
-          <View style={[styles.Btn,{width: '35%'}]}>
+<View style={[styles.Btn,{width: '35%'}]}>
           <TouchableOpacity
           onPress={()=>navigation.navigate('ViewDetails')}>
             <Text style={styles.text}>View Details</Text>
@@ -58,7 +63,7 @@ const Home = ({navigation}) => {
             </View>:null
             }
         </View>
-      </View>
+</ScrollView>
     </>
   );
 };
