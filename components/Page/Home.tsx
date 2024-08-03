@@ -1,4 +1,12 @@
-import {StyleSheet, Text,TouchableOpacity,ScrollView,useColorScheme, View, TextInput} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  ScrollView,
+  useColorScheme,
+  View,
+  TextInput,
+} from 'react-native';
 import React, {useState} from 'react';
 
 const Home = ({navigation}) => {
@@ -9,15 +17,13 @@ const Home = ({navigation}) => {
   const placeholderColor = isDark ? '#FFFFFF' : '#000000';
 
   const [text, setText] = useState('');
-  const [press,setPress] = useState(0);
-
-  const ran=Math.random(100);
-  console.log(ran)
+  const [press, setPress] = useState(0);
+  const [ran,setRan]=useState(0)
+  
   return (
     <>
-
-<ScrollView style={[styles.container,{backgroundColor:backgroundColor}]}>
-
+      <ScrollView
+        style={[styles.container, {backgroundColor: backgroundColor}]}>
         <View
           style={[
             styles.uppperBar,
@@ -36,34 +42,38 @@ const Home = ({navigation}) => {
               styles.srn,
               {backgroundColor: uppperBarBackgroundColor, color: color},
             ]}
-            />
-<View style={styles.mulBtn}>
-
-          <View style={[styles.Btn,{width: '20%'}]}>
-          <TouchableOpacity
-          onPress={()=>setPress(1)}>
-            <Text style={styles.text}>Check</Text>
-          </TouchableOpacity>
-          </View>
-{press?
-
-
-<View style={[styles.Btn,{width: '35%'}]}>
-          <TouchableOpacity
-          onPress={()=>navigation.navigate('ViewDetails')}>
-            <Text style={styles.text}>View Details</Text>
-          </TouchableOpacity>
-          </View>:null
-}
+          />
+          <View style={styles.mulBtn}>
+            <View style={[styles.Btn, {width: '20%'}]}>
+              <TouchableOpacity
+                onPress={() => {
+                  const randomValue = Math.floor(Math.random() * 100);
+                  
+                  setRan(randomValue);
+                  setPress(1);
+                  // send the Srno to flask
+                }}>
+                <Text style={styles.text}>Check</Text>
+              </TouchableOpacity>
             </View>
-            {press?
-              <View style={styles.percent}>
-
-<Text style={styles.perTxt}>70%</Text>
-            </View>:null
-            }
+            {press ? (
+              <View style={[styles.Btn, {width: '35%'}]}>
+                <TouchableOpacity
+                  onPress={() => navigation.navigate('ViewDetails')}>
+                  <Text style={styles.text}>View Details</Text>
+                </TouchableOpacity>
+              </View>
+            ) : null}
+          </View>
+          {press ? (
+            <View style={styles.percent}>
+              <Text style={[styles.perTxt, {color: (ran>=75) ? 'green' : 'red'}]}>
+                {ran}%
+              </Text>
+            </View>
+          ) : null}
         </View>
-</ScrollView>
+      </ScrollView>
     </>
   );
 };
@@ -102,26 +112,24 @@ const styles = StyleSheet.create({
   Btn: {
     margin: 20,
     height: 40,
-    
+
     backgroundColor: '#4b81f4',
     borderRadius: 25,
     justifyContent: 'center',
     alignItems: 'center',
-    
   },
   text: {
     color: '#000000',
-    fontSize:20
+    fontSize: 20,
   },
-  mulBtn:{
-    flex:1,
-    flexDirection:'row',
+  mulBtn: {
+    flex: 1,
+    flexDirection: 'row',
   },
-  percent:{
-    flex:2,
+  percent: {
+    flex: 2,
   },
-  perTxt:{
-    color:'#0af047',
-    fontSize:200
-  }
+  perTxt: {
+    fontSize: 200,
+  },
 });
