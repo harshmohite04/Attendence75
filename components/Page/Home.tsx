@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 
+
 const Home = ({navigation}) => {
   const isDark = useColorScheme() == 'dark';
   const backgroundColor = isDark ? '#252525' : '#d6d6d6';
