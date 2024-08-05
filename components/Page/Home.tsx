@@ -9,7 +9,6 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 
-
 const Home = ({navigation}) => {
   const isDark = useColorScheme() == 'dark';
   const backgroundColor = isDark ? '#252525' : '#d6d6d6';
@@ -18,9 +17,27 @@ const Home = ({navigation}) => {
   const placeholderColor = isDark ? '#FFFFFF' : '#000000';
 
   const [text, setText] = useState('');
-  const [press, setPress] = useState(0);
-  const [ran,setRan]=useState(0)
-  
+  const [press, setPress] = useState(false);
+  const [totalPerc, setTotalPerc] = useState(0);
+
+  const handleSubmit = async () => {
+    try {
+      const response = await fetch(`http://192.168.1.7:5000/api/student?srn=${text}`);
+      const data = await response.json();
+      console.log(data)
+      if (response.ok) {
+        setTotalPerc(data.student_data.TOTAL_PERC);
+        setPress(true);
+      } else {
+        console.error(data.error);
+        setPress(false);
+      }
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      setPress(false);
+    }
+  };
+
   return (
     <>
       <ScrollView
@@ -30,7 +47,7 @@ const Home = ({navigation}) => {
             styles.uppperBar,
             {backgroundColor: uppperBarBackgroundColor},
           ]}>
-          <Text style={[styles.txt, {color: color}]}>ATTENDENCE TY F</Text>
+          <Text style={[styles.txt, {color: color}]}>ATTENDANCE TY F</Text>
         </View>
         <View style={[styles.body]}>
           <TextInput
@@ -46,14 +63,7 @@ const Home = ({navigation}) => {
           />
           <View style={styles.mulBtn}>
             <View style={[styles.Btn, {width: '20%'}]}>
-              <TouchableOpacity
-                onPress={() => {
-                  const randomValue = Math.floor(Math.random() * 100);
-                  
-                  setRan(randomValue);
-                  setPress(1);
-                  // send the Srno to flask
-                }}>
+              <TouchableOpacity onPress={handleSubmit}>
                 <Text style={styles.text}>Check</Text>
               </TouchableOpacity>
             </View>
@@ -68,8 +78,8 @@ const Home = ({navigation}) => {
           </View>
           {press ? (
             <View style={styles.percent}>
-              <Text style={[styles.perTxt, {color: (ran>=75) ? 'green' : 'red'}]}>
-                {ran}%
+              <Text style={[styles.perTxt, {color: totalPerc >= 75 ? 'green' : 'red'}]}>
+                {totalPerc}%
               </Text>
             </View>
           ) : null}
@@ -113,7 +123,6 @@ const styles = StyleSheet.create({
   Btn: {
     margin: 20,
     height: 40,
-
     backgroundColor: '#4b81f4',
     borderRadius: 25,
     justifyContent: 'center',
