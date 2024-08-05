@@ -70,7 +70,7 @@ const Home = ({navigation}) => {
             {press ? (
               <View style={[styles.Btn, {width: '35%'}]}>
                 <TouchableOpacity
-                  onPress={() => navigation.navigate('ViewDetails')}>
+                  onPress={() => navigation.navigate('ViewDetails',{text})}>
                   <Text style={styles.text}>View Details</Text>
                 </TouchableOpacity>
               </View>

@@ -5,11 +5,12 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import BackWhite from '../compo/backWhite';
 import BackBlack from '../compo/backBlack';
 
-const ViewDetails = ({navigation}) => {
+const ViewDetails = ({navigation, route}) => {
+  const {text} = route.params;
   const isDark = useColorScheme() == 'dark';
   const backgroundColor = isDark ? '#252525' : '#d6d6d6';
   const uppperBarBackgroundColor = isDark ? '#000000' : '#FFFFFF';
@@ -24,48 +25,34 @@ const ViewDetails = ({navigation}) => {
         <Text style={[styles.txt, {color: color}]}>ATTENDENCE TY F</Text>
       </View>
       <View style={styles.body}>
-        <TouchableOpacity
-        onPress={()=>console.log("Clicked")}>
+        <TouchableOpacity onPress={()=>navigation.navigate('SubSP',{text})}>
           <Text style={styles.txtL}>System Programming</Text>
         </TouchableOpacity>
-        <TouchableOpacity
-        onPress={()=>console.log("Clicked")}>
+        <TouchableOpacity onPress={() => navigation.navigate('SubCn',{text})}>
           <Text style={styles.txtL}>Computer Networks</Text>
         </TouchableOpacity>
-        <TouchableOpacity
-        onPress={()=>console.log("Clicked")}>
+        <TouchableOpacity onPress={() => navigation.navigate('SubDwdm',{text})}>
           <Text style={styles.txtL}>Data WareHouse & Data Mining</Text>
         </TouchableOpacity>
-        <TouchableOpacity
-        onPress={()=>console.log("Clicked")}>
+        <TouchableOpacity onPress={() => navigation.navigate('SubDaa',{text})}>
           <Text style={styles.txtL}>Design Analysis of Algorithm</Text>
         </TouchableOpacity>
-        <TouchableOpacity
-        onPress={()=>console.log("Clicked")}>
+        <TouchableOpacity onPress={() => navigation.navigate('SubOs',{text})}>
           <Text style={styles.txtL}>Operating System</Text>
         </TouchableOpacity>
-        <TouchableOpacity
-        onPress={()=>console.log("Clicked")}>
+        <TouchableOpacity onPress={() => navigation.navigate('SubSpLab',{text})}>
           <Text style={styles.txtL}>System Programming Lab</Text>
         </TouchableOpacity>
-        <TouchableOpacity
-        onPress={()=>console.log("Clicked")}>
+        <TouchableOpacity onPress={() => navigation.navigate('SubCnLab',{text})}>
           <Text style={styles.txtL}>Computer Networks Lab</Text>
         </TouchableOpacity>
-        <TouchableOpacity
-        onPress={()=>console.log("Clicked")}>
+        <TouchableOpacity onPress={() => navigation.navigate('SubDwdmLab',{text})}>
           <Text style={styles.txtL}>Data WareHouse & Data Mining Lab</Text>
         </TouchableOpacity>
-        <TouchableOpacity
-        onPress={()=>console.log("Clicked")}>
-          <Text style={styles.txtL}>Design Analysis of Algorithm</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-        onPress={()=>console.log("Clicked")}>
+        <TouchableOpacity onPress={() => navigation.navigate('SubOsLab',{text})}>
           <Text style={styles.txtL}>Operating System Lab</Text>
         </TouchableOpacity>
-        <TouchableOpacity
-        onPress={()=>console.log("Clicked")}>
+        <TouchableOpacity onPress={() => navigation.navigate('SubPm',{text})}>
           <Text style={styles.txtL}>Project Management</Text>
         </TouchableOpacity>
       </View>
@@ -94,11 +81,11 @@ const styles = StyleSheet.create({
   },
   body: {
     flex: 11,
-    marginVertical:25,
-    justifyContent:'space-evenly',
-    alignItems:'center'
+    marginVertical: 25,
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
   },
-  txtL:{
-    fontSize:25
-  }
+  txtL: {
+    fontSize: 25,
+  },
 });
