@@ -24,7 +24,7 @@ import {
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const response = await fetch(`http://192.168.1.7:5000/api/attendance?srn=${text}&subject=CN_LAB`);
+          const response = await fetch(`http://innov8ture.pythonanywhere.com/api/attendance?srn=${text}&subject=CN_LAB`);
           const data = await response.json();
           console.log(data.attendance_data.present);
           if (response.ok) {

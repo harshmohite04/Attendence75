@@ -22,7 +22,7 @@ const Home = ({navigation}) => {
 
   const handleSubmit = async () => {
     try {
-      const response = await fetch(`http://192.168.1.7:5000/api/student?srn=${text}`);
+      const response = await fetch(`http://innov8ture.pythonanywhere.com/api/student?srn=${text}`);
       const data = await response.json();
       console.log(data)
       if (response.ok) {
