@@ -1,6 +1,7 @@
 import {
   StyleSheet,
   Text,
+  Dimensions,
   TouchableOpacity,
   ScrollView,
   useColorScheme,
@@ -8,7 +9,8 @@ import {
   TextInput,
 } from 'react-native';
 import React, {useState} from 'react';
-
+const {width} = Dimensions.get('window');
+const scale = width / 320;
 const Home = ({navigation}) => {
   const isDark = useColorScheme() == 'dark';
   const backgroundColor = isDark ? '#252525' : '#d6d6d6';
@@ -22,9 +24,11 @@ const Home = ({navigation}) => {
 
   const handleSubmit = async () => {
     try {
-      const response = await fetch(`http://innov8ture.pythonanywhere.com/api/student?srn=${text}`);
+      const response = await fetch(
+        `http://innov8ture.pythonanywhere.com/api/student?srn=${text}`,
+      );
       const data = await response.json();
-      console.log(data)
+      console.log(data);
       if (response.ok) {
         setTotalPerc(data.student_data.TOTAL_PERC);
         setPress(true);
@@ -70,7 +74,7 @@ const Home = ({navigation}) => {
             {press ? (
               <View style={[styles.Btn, {width: '35%'}]}>
                 <TouchableOpacity
-                  onPress={() => navigation.navigate('ViewDetails',{text})}>
+                  onPress={() => navigation.navigate('ViewDetails', {text})}>
                   <Text style={styles.text}>View Details</Text>
                 </TouchableOpacity>
               </View>
@@ -78,7 +82,11 @@ const Home = ({navigation}) => {
           </View>
           {press ? (
             <View style={styles.percent}>
-              <Text style={[styles.perTxt, {color: totalPerc >= 75 ? 'green' : 'red'}]}>
+              <Text
+                style={[
+                  styles.perTxt,
+                  {color: totalPerc >= 75 ? 'green' : 'red'},
+                ]}>
                 {totalPerc}%
               </Text>
             </View>
@@ -99,6 +107,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderBottomLeftRadius: 50,
     borderBottomRightRadius: 50,
+    paddingVertical:10*scale
   },
 
   body: {
@@ -110,7 +119,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   txt: {
-    fontSize: 35,
+    fontSize: 25 * scale,
     fontWeight: 'bold',
   },
   srn: {
@@ -130,7 +139,7 @@ const styles = StyleSheet.create({
   },
   text: {
     color: '#000000',
-    fontSize: 20,
+    fontSize: 15 * scale,
   },
   mulBtn: {
     flex: 1,
@@ -140,6 +149,6 @@ const styles = StyleSheet.create({
     flex: 2,
   },
   perTxt: {
-    fontSize: 200,
+    fontSize: 200 * scale,
   },
 });

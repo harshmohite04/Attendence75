@@ -2,12 +2,13 @@ import {
   StyleSheet,
   TouchableOpacity,
   Text,
+  Dimensions,
   useColorScheme,
   View,
 } from 'react-native';
 import React, {useState} from 'react';
-import BackWhite from '../compo/backWhite';
-import BackBlack from '../compo/backBlack';
+const {width} = Dimensions.get('window');
+const scale = width / 320;
 
 const ViewDetails = ({navigation, route}) => {
   const {text} = route.params;
@@ -19,41 +20,43 @@ const ViewDetails = ({navigation, route}) => {
     <View style={[styles.container, {backgroundColor: backgroundColor}]}>
       <View
         style={[styles.uppperBar, {backgroundColor: uppperBarBackgroundColor}]}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
-          {isDark ? <BackWhite /> : <BackBlack />}
-        </TouchableOpacity>
         <Text style={[styles.txt, {color: color}]}>ATTENDENCE TY F</Text>
       </View>
       <View style={styles.body}>
-        <TouchableOpacity onPress={()=>navigation.navigate('SubSP',{text})}>
-          <Text style={styles.txtL}>System Programming</Text>
+        <TouchableOpacity onPress={() => navigation.navigate('Subject', {text,subject:'SP'})}>
+          <Text style={[styles.txtL,{color:color}]}>System Programming</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('SubCn',{text})}>
-          <Text style={styles.txtL}>Computer Networks</Text>
+        <TouchableOpacity onPress={() => navigation.navigate('Subject', {text,subject:'CN'})}>
+          <Text style={[styles.txtL,{color:color}]}>Computer Networks</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('SubDwdm',{text})}>
-          <Text style={styles.txtL}>Data WareHouse & Data Mining</Text>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Subject', {text,subject:'DWDM'})}>
+          <Text style={[styles.txtL,{color:color}]}>Data WareHouse & Data Mining</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('SubDaa',{text})}>
-          <Text style={styles.txtL}>Design Analysis of Algorithm</Text>
+        <TouchableOpacity onPress={() => navigation.navigate('Subject', {text,subject:'DAA'})}>
+          <Text style={[styles.txtL,{color:color}]}>Design Analysis of Algorithm</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('SubOs',{text})}>
-          <Text style={styles.txtL}>Operating System</Text>
+        <TouchableOpacity onPress={() => navigation.navigate('Subject', {text,subject:'OS'})}>
+          <Text style={[styles.txtL,{color:color}]}>Operating System</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('SubSpLab',{text})}>
-          <Text style={styles.txtL}>System Programming Lab</Text>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Subject', {text,subject:'SP_LAB'})}>
+          <Text style={[styles.txtL,{color:color}]}>System Programming Lab</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('SubCnLab',{text})}>
-          <Text style={styles.txtL}>Computer Networks Lab</Text>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Subject', {text,subject:'CN_LAB'})}>
+          <Text style={[styles.txtL,{color:color}]}>Computer Networks Lab</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('SubDwdmLab',{text})}>
-          <Text style={styles.txtL}>Data WareHouse & Data Mining Lab</Text>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Subject', {text,subject:'DWDM_LAB'})}>
+          <Text style={[styles.txtL,{color:color}]}>Data WareHouse & Data Mining Lab</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('SubOsLab',{text})}>
-          <Text style={styles.txtL}>Operating System Lab</Text>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Subject', {text,subject:'OS_LAB'})}>
+          <Text style={[styles.txtL,{color:color}]}>Operating System Lab</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('SubPm',{text})}>
-          <Text style={styles.txtL}>Project Management</Text>
+        <TouchableOpacity onPress={() => navigation.navigate('Subject', {text,subject:'PM'})}>
+          <Text style={[styles.txtL,{color:color}]}>Project Management</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -73,7 +76,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   txt: {
-    fontSize: 35,
+    fontSize: 25*scale,
     fontWeight: 'bold',
   },
   container: {
@@ -86,6 +89,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   txtL: {
-    fontSize: 25,
+    fontSize: 20*scale,
+
   },
 });

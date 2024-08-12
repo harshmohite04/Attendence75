@@ -9,8 +9,9 @@ import {
   import BackBlack from '../compo/backBlack';
   import BackWhite from '../compo/backWhite';
   
-  const SubDwdmLab = ({navigation, route}) => {
+  const Subject = ({navigation, route}) => {
     const {text} = route.params;
+    const {subject} = route.params
   
     const isDark = useColorScheme() == 'dark';
     const backgroundColor = isDark ? '#252525' : '#d6d6d6';
@@ -24,7 +25,7 @@ import {
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const response = await fetch(`http://innov8ture.pythonanywhere.com/api/attendance?srn=${text}&subject=DWDM_LAB`);
+          const response = await fetch(`http://innov8ture.pythonanywhere.com/api/attendance?srn=${text}&subject=${subject}`);
           const data = await response.json();
           console.log(data.attendance_data.present);
           if (response.ok) {
@@ -79,7 +80,7 @@ import {
     );
   };
   
-  export default SubDwdmLab;
+  export default Subject;
   
   const styles = StyleSheet.create({
     container: {
