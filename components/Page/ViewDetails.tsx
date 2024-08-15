@@ -11,7 +11,7 @@ const {width} = Dimensions.get('window');
 const scale = width / 320;
 
 const ViewDetails = ({navigation, route}) => {
-  const {text} = route.params;
+  const {name, rollNo, text} = route.params;
   const backgroundColor = '#ffffff';
   const uppperBarBackgroundColor = '#000000';
   const color = '#000000';
@@ -24,16 +24,16 @@ const ViewDetails = ({navigation, route}) => {
       </View>
       <View style={styles.body}>
         <TouchableOpacity
-          onPress={() => navigation.navigate('Subject', {text, subject: 'SP'})}>
+          onPress={() => navigation.navigate('Subject', {name, rollNo, text, subject: 'SP'})}>
           <Text style={[styles.txtL, {color: color}]}>System Programming</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => navigation.navigate('Subject', {text, subject: 'CN'})}>
+          onPress={() => navigation.navigate('Subject', {name, rollNo, text, subject: 'CN'})}>
           <Text style={[styles.txtL, {color: color}]}>Computer Networks</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() =>
-            navigation.navigate('Subject', {text, subject: 'DWDM'})
+            navigation.navigate('Subject', {name, rollNo, text, subject: 'DWDM'})
           }>
           <Text style={[styles.txtL, {color: color}]}>
             Data WareHouse & Data Mining
@@ -41,19 +41,19 @@ const ViewDetails = ({navigation, route}) => {
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() =>
-            navigation.navigate('Subject', {text, subject: 'DAA'})
+            navigation.navigate('Subject', {name, rollNo, text, subject: 'DAA'})
           }>
           <Text style={[styles.txtL, {color: color}]}>
             Design Analysis of Algorithm
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => navigation.navigate('Subject', {text, subject: 'OS'})}>
+          onPress={() => navigation.navigate('Subject', {name, rollNo, text, subject: 'OS'})}>
           <Text style={[styles.txtL, {color: color}]}>Operating System</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() =>
-            navigation.navigate('Subject', {text, subject: 'SP_LAB'})
+            navigation.navigate('Subject', {name, rollNo, text, subject: 'SP_LAB'})
           }>
           <Text style={[styles.txtL, {color: color}]}>
             System Programming Lab
@@ -61,7 +61,7 @@ const ViewDetails = ({navigation, route}) => {
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() =>
-            navigation.navigate('Subject', {text, subject: 'CN_LAB'})
+            navigation.navigate('Subject', {name, rollNo, text, subject: 'CN_LAB'})
           }>
           <Text style={[styles.txtL, {color: color}]}>
             Computer Networks Lab
@@ -69,7 +69,7 @@ const ViewDetails = ({navigation, route}) => {
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() =>
-            navigation.navigate('Subject', {text, subject: 'DWDM_LAB'})
+            navigation.navigate('Subject', {name, rollNo, text, subject: 'DWDM_LAB'})
           }>
           <Text style={[styles.txtL, {color: color}]}>
             Data WareHouse & Data Mining Lab
@@ -77,14 +77,14 @@ const ViewDetails = ({navigation, route}) => {
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() =>
-            navigation.navigate('Subject', {text, subject: 'OS_LAB'})
+            navigation.navigate('Subject', {name, rollNo, text, subject: 'OS_LAB'})
           }>
           <Text style={[styles.txtL, {color: color}]}>
             Operating System Lab
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => navigation.navigate('Subject', {text, subject: 'PM'})}>
+          onPress={() => navigation.navigate('Subject', {name, rollNo, text, subject: 'PM'})}>
           <Text style={[styles.txtL, {color: color}]}>Project Management</Text>
         </TouchableOpacity>
       </View>

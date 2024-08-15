@@ -4,47 +4,46 @@ import {
   Dimensions,
   TouchableOpacity,
   ScrollView,
-  useColorScheme,
   View,
   TextInput,
-  ActivityIndicator, // Import ActivityIndicator
+  ActivityIndicator,
 } from 'react-native';
 import React, {useState} from 'react';
 const {width} = Dimensions.get('window');
 const scale = width / 320;
 
 const Home = ({navigation}) => {
-  const isDark = useColorScheme() == 'dark';
-  const backgroundColor = isDark ? '#ffffff' : '#ffffff';
-  const uppperBarBackgroundColor = isDark ? '#000000' : '#000000';
-  const color = isDark ? '#FFFFFF' : '#ffffff';
-  const placeholderColor = isDark ? '#FFFFFF' : '#ffffff';
+  const backgroundColor =  '#ffffff';
+  const uppperBarBackgroundColor = '#000000';
+  const color =  '#ffffff';
+  const placeholderColor = '#ffffff';
 
   const [text, setText] = useState('');
-  const [press, setPress] = useState(false);
-  const [totalPerc, setTotalPerc] = useState(0);
-  const [loading, setLoading] = useState(false); // Loading state
+  const [loading, setLoading] = useState(false); 
 
   const handleSubmit = async () => {
-    setLoading(true); // Start loading
+    setLoading(true); 
+    
+
     try {
       const response = await fetch(
-        `http://innov8ture.pythonanywhere.com/api/student?srn=${text}`,
+        `https://innov8ture.pythonanywhere.com/api/student?srn=${text}`,
       );
       const data = await response.json();
       console.log(data);
       if (response.ok) {
-        setTotalPerc(data.student_data.TOTAL_PERC);
-        setPress(true);
+        const percentage= data.student_data.TOTAL_PERC
+        const name =data.student_data.Name
+        const rollNo =data.student_data.Roll_no
+        navigation.navigate('Check',{percentage,name,rollNo,text})
+
       } else {
-        console.error(data.error);
-        setPress(false);
+        console.error(data.error); 
       }
     } catch (error) {
       console.error('Error fetching data:', error);
-      setPress(false);
     } finally {
-      setLoading(false); // Stop loading
+      setLoading(false); 
     }
   };
 
@@ -70,7 +69,7 @@ const Home = ({navigation}) => {
               styles.srn,
               {backgroundColor: '#383837', color: color},
             ]}
-          />
+            />
           <View style={styles.mulBtn}>
             <TouchableOpacity
               style={[styles.Btn, {width: '25%'}]}
@@ -80,26 +79,10 @@ const Home = ({navigation}) => {
                 {loading ? 'Loading...' : 'Check'}
               </Text>
             </TouchableOpacity>
-            {press && !loading ? (
-              <TouchableOpacity
-                style={[styles.Btn, {width: '35%'}]}
-                onPress={() => navigation.navigate('ViewDetails', {text})}>
-                <Text style={styles.text}>View Details</Text>
-              </TouchableOpacity>
-            ) : null}
+            
           </View>
           {loading ? (
             <ActivityIndicator size="large" color={color} />
-          ) : press ? (
-            <View style={styles.percent}>
-              <Text
-                style={[
-                  styles.perTxt,
-                  {color: totalPerc >= 75 ? 'black' : '#fc4242'},
-                ]}>
-                {totalPerc}%
-              </Text>
-            </View>
           ) : null}
         </View>
       </ScrollView>
@@ -119,7 +102,7 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 50*scale,
     paddingVertical: 10 * scale,
   },
-
+  
   body: {
     flex: 11,
     alignItems: 'center',
