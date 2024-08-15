@@ -1,22 +1,25 @@
 import {
     StyleSheet,
     Text,
-    TouchableOpacity,
     useColorScheme,
     View,
+    Dimensions,
+    TouchableOpacity
   } from 'react-native';
   import React, { useState, useEffect } from 'react';
-  import BackBlack from '../compo/backBlack';
-  import BackWhite from '../compo/backWhite';
   
-  const Subject = ({navigation, route}) => {
+  const {width} =Dimensions.get('window')
+  const scale = width/320;
+
+  const Subject = ({route}) => {
     const {text} = route.params;
     const {subject} = route.params
   
-    const isDark = useColorScheme() == 'dark';
-    const backgroundColor = isDark ? '#252525' : '#d6d6d6';
-    const uppperBarBackgroundColor = isDark ? '#000000' : '#FFFFFF';
-    const color = isDark ? '#FFFFFF' : '#000000';
+
+
+    const backgroundColor = '#ffffff';
+    const uppperBarBackgroundColor = '#000000'
+    const color = '#000000'
   
     const [present, setPresent] = useState(10);
     const [absent, setAbsent] = useState(0);
@@ -45,10 +48,7 @@ import {
       <View style={[styles.container, {backgroundColor: backgroundColor}]}>
         <View
           style={[styles.uppperBar, {backgroundColor: uppperBarBackgroundColor}]}>
-          <TouchableOpacity onPress={() => navigation.goBack()}>
-            {isDark ? <BackWhite /> : <BackBlack />}
-          </TouchableOpacity>
-          <Text style={[styles.txt, {color: color}]}>ATTENDENCE TY F</Text>
+          <Text style={[styles.txt, {color: '#ffffff'}]}>ATTENDENCE TY F</Text>
         </View>
         <View style={styles.body}>
           <View style={styles.table}>
@@ -75,6 +75,7 @@ import {
               </View>
             </View>
           </View>
+          
         </View>
       </View>
     );
@@ -91,13 +92,14 @@ import {
       width: '100%',
       justifyContent: 'space-evenly',
       alignItems: 'center',
-      borderBottomLeftRadius: 50,
-      borderBottomRightRadius: 50,
+      borderBottomLeftRadius: 50*scale,
+      borderBottomRightRadius: 50*scale,
       flexDirection: 'row',
     },
     txt: {
-      fontSize: 35,
+      fontSize: 25*scale,
       fontWeight: 'bold',
+      
     },
     body: {
       flex: 11,
@@ -107,21 +109,27 @@ import {
     table: {
       width: '90%',
       borderWidth: 1,
-      borderColor: '#000',
+      borderColor: '#000000',
     },
     row: {
       flexDirection: 'row',
     },
     cell: {
       flex: 1,
-      borderWidth: 1,
+      borderWidth: 1*scale,
       borderColor: '#000',
       alignItems: 'center',
       justifyContent: 'center',
-      padding: 10,
+      padding: 10*scale,
     },
     cellText: {
-      fontSize: 16,
+      fontSize: 20*scale,
     },
+    btn:{
+      marginTop:10*scale,
+      padding:10*scale,
+      backgroundColor:'#000000',
+      borderRadius:10*scale
+    }
   });
   

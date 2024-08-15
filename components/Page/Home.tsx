@@ -7,22 +7,26 @@ import {
   useColorScheme,
   View,
   TextInput,
+  ActivityIndicator, // Import ActivityIndicator
 } from 'react-native';
 import React, {useState} from 'react';
 const {width} = Dimensions.get('window');
 const scale = width / 320;
+
 const Home = ({navigation}) => {
   const isDark = useColorScheme() == 'dark';
-  const backgroundColor = isDark ? '#252525' : '#d6d6d6';
-  const uppperBarBackgroundColor = isDark ? '#000000' : '#FFFFFF';
-  const color = isDark ? '#FFFFFF' : '#000000';
-  const placeholderColor = isDark ? '#FFFFFF' : '#000000';
+  const backgroundColor = isDark ? '#ffffff' : '#ffffff';
+  const uppperBarBackgroundColor = isDark ? '#000000' : '#000000';
+  const color = isDark ? '#FFFFFF' : '#ffffff';
+  const placeholderColor = isDark ? '#FFFFFF' : '#ffffff';
 
   const [text, setText] = useState('');
   const [press, setPress] = useState(false);
   const [totalPerc, setTotalPerc] = useState(0);
+  const [loading, setLoading] = useState(false); // Loading state
 
   const handleSubmit = async () => {
+    setLoading(true); // Start loading
     try {
       const response = await fetch(
         `http://innov8ture.pythonanywhere.com/api/student?srn=${text}`,
@@ -39,6 +43,8 @@ const Home = ({navigation}) => {
     } catch (error) {
       console.error('Error fetching data:', error);
       setPress(false);
+    } finally {
+      setLoading(false); // Stop loading
     }
   };
 
@@ -62,30 +68,34 @@ const Home = ({navigation}) => {
             placeholderTextColor={placeholderColor}
             style={[
               styles.srn,
-              {backgroundColor: uppperBarBackgroundColor, color: color},
+              {backgroundColor: '#383837', color: color},
             ]}
           />
           <View style={styles.mulBtn}>
-            <View style={[styles.Btn, {width: '20%'}]}>
-              <TouchableOpacity onPress={handleSubmit}>
-                <Text style={styles.text}>Check</Text>
+            <TouchableOpacity
+              style={[styles.Btn, {width: '25%'}]}
+              onPress={handleSubmit}
+              disabled={loading}>
+              <Text style={styles.text}>
+                {loading ? 'Loading...' : 'Check'}
+              </Text>
+            </TouchableOpacity>
+            {press && !loading ? (
+              <TouchableOpacity
+                style={[styles.Btn, {width: '35%'}]}
+                onPress={() => navigation.navigate('ViewDetails', {text})}>
+                <Text style={styles.text}>View Details</Text>
               </TouchableOpacity>
-            </View>
-            {press ? (
-              <View style={[styles.Btn, {width: '35%'}]}>
-                <TouchableOpacity
-                  onPress={() => navigation.navigate('ViewDetails', {text})}>
-                  <Text style={styles.text}>View Details</Text>
-                </TouchableOpacity>
-              </View>
             ) : null}
           </View>
-          {press ? (
+          {loading ? (
+            <ActivityIndicator size="large" color={color} />
+          ) : press ? (
             <View style={styles.percent}>
               <Text
                 style={[
                   styles.perTxt,
-                  {color: totalPerc >= 75 ? 'green' : 'red'},
+                  {color: totalPerc >= 75 ? 'black' : '#fc4242'},
                 ]}>
                 {totalPerc}%
               </Text>
@@ -105,14 +115,13 @@ const styles = StyleSheet.create({
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
-    borderBottomLeftRadius: 50,
-    borderBottomRightRadius: 50,
-    paddingVertical:10*scale
+    borderBottomLeftRadius: 50*scale,
+    borderBottomRightRadius: 50*scale,
+    paddingVertical: 10 * scale,
   },
 
   body: {
     flex: 11,
-    // justifyContent:'center',
     alignItems: 'center',
   },
   container: {
@@ -123,17 +132,17 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   srn: {
-    marginTop: 100,
-    borderWidth: 1,
-    borderRadius: 10,
+    marginTop: 100*scale,
+    borderWidth: 1*scale,
+    borderRadius: 10*scale,
     width: '50%',
-    paddingLeft: 10,
+    paddingLeft: 10*scale,
   },
   Btn: {
-    margin: 20,
-    height: 40,
-    backgroundColor: '#4b81f4',
-    borderRadius: 25,
+    margin: 20*scale,
+    height: 40*scale,
+    backgroundColor: '#7ae9ff',
+    borderRadius: 25*scale,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -149,6 +158,6 @@ const styles = StyleSheet.create({
     flex: 2,
   },
   perTxt: {
-    fontSize: 200 * scale,
+    fontSize: 150 * scale,
   },
 });

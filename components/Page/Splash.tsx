@@ -3,11 +3,13 @@ import {
   Text,
   useColorScheme,
   SafeAreaView,
+  Dimensions,
   View,
 } from 'react-native';
 import React, { useEffect } from 'react';
 import Video from 'react-native-video';
-
+const {width}= Dimensions.get('window');
+const scale = width/320;
 const Splash = ({navigation}) => {
   const isDark = useColorScheme() == 'dark';
 
@@ -45,7 +47,7 @@ const styles = StyleSheet.create({
     backgroundColor:'#ffffff'
   },
   video: {
-    width: 300,
-    height:300,
+    width: 300*scale,
+    height:300*scale,
   },
 });
