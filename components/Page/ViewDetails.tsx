@@ -5,6 +5,7 @@ import {
   Dimensions,
   useColorScheme,
   View,
+  ScrollView
 } from 'react-native';
 import React, {useState} from 'react';
 const {width} = Dimensions.get('window');
@@ -17,78 +18,91 @@ const ViewDetails = ({navigation, route}) => {
   const color = '#000000';
 
   return (
+      <ScrollView>
     <View style={[styles.container, {backgroundColor: backgroundColor}]}>
       <View
         style={[styles.uppperBar, {backgroundColor: uppperBarBackgroundColor}]}>
-        <Text style={[styles.txt, {color: '#ffffff'}]}>ATTENDENCE TY F</Text>
+        <Text style={[styles.txt, {color: '#ffffff'}]}>ATTENDENCE</Text>
       </View>
+        
       <View style={styles.body}>
         <TouchableOpacity
-          onPress={() => navigation.navigate('Subject', {name, rollNo, text, subject: 'SP'})}>
+        style={styles.btn2}
+        onPress={() => navigation.navigate('Subject', {name, rollNo, text, subject: 'SP'})}>
           <Text style={[styles.txtL, {color: color}]}>System Programming</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => navigation.navigate('Subject', {name, rollNo, text, subject: 'CN'})}>
+        style={styles.btn2}
+        onPress={() => navigation.navigate('Subject', {name, rollNo, text, subject: 'CN'})}>
           <Text style={[styles.txtL, {color: color}]}>Computer Networks</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() =>
-            navigation.navigate('Subject', {name, rollNo, text, subject: 'DWDM'})
-          }>
+        style={styles.btn2}
+        onPress={() =>
+          navigation.navigate('Subject', {name, rollNo, text, subject: 'DWDM'})
+        }>
           <Text style={[styles.txtL, {color: color}]}>
             Data WareHouse & Data Mining
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() =>
-            navigation.navigate('Subject', {name, rollNo, text, subject: 'DAA'})
-          }>
+        style={styles.btn2}
+        onPress={() =>
+          navigation.navigate('Subject', {name, rollNo, text, subject: 'DAA'})
+        }>
           <Text style={[styles.txtL, {color: color}]}>
             Design Analysis of Algorithm
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => navigation.navigate('Subject', {name, rollNo, text, subject: 'OS'})}>
+        style={styles.btn2}
+        onPress={() => navigation.navigate('Subject', {name, rollNo, text, subject: 'OS'})}>
           <Text style={[styles.txtL, {color: color}]}>Operating System</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() =>
-            navigation.navigate('Subject', {name, rollNo, text, subject: 'SP_LAB'})
-          }>
+        style={styles.btn2}
+        onPress={() =>
+          navigation.navigate('Subject', {name, rollNo, text, subject: 'SP_LAB'})
+        }>
           <Text style={[styles.txtL, {color: color}]}>
             System Programming Lab
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() =>
-            navigation.navigate('Subject', {name, rollNo, text, subject: 'CN_LAB'})
-          }>
+        style={styles.btn2}
+        onPress={() =>
+          navigation.navigate('Subject', {name, rollNo, text, subject: 'CN_LAB'})
+        }>
           <Text style={[styles.txtL, {color: color}]}>
             Computer Networks Lab
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() =>
-            navigation.navigate('Subject', {name, rollNo, text, subject: 'DWDM_LAB'})
-          }>
+        style={styles.btn2}
+        onPress={() =>
+          navigation.navigate('Subject', {name, rollNo, text, subject: 'DWDM_LAB'})
+        }>
           <Text style={[styles.txtL, {color: color}]}>
-            Data WareHouse & Data Mining Lab
+            Data Warehouse & Data Mining Lab
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() =>
-            navigation.navigate('Subject', {name, rollNo, text, subject: 'OS_LAB'})
-          }>
+        style={styles.btn2}
+        onPress={() =>
+          navigation.navigate('Subject', {name, rollNo, text, subject: 'OS_LAB'})
+        }>
           <Text style={[styles.txtL, {color: color}]}>
             Operating System Lab
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => navigation.navigate('Subject', {name, rollNo, text, subject: 'PM'})}>
+        style={styles.btn2}
+        onPress={() => navigation.navigate('Subject', {name, rollNo, text, subject: 'PM'})}>
           <Text style={[styles.txtL, {color: color}]}>Project Management</Text>
         </TouchableOpacity>
       </View>
     </View>
+</ScrollView>
   );
 };
 
@@ -114,12 +128,19 @@ const styles = StyleSheet.create({
   body: {
     flex: 11,
     marginVertical: 25 * scale,
-    justifyContent: 'space-evenly',
-    alignItems: 'center',
+    // justifyContent: 'space-evenly',
+    // alignItems: 'center',
   },
   txtL: {
     fontSize: 20 * scale,
-    borderBottomWidth: 1,
     borderColor: '#000000',
+
   },
+  btn2:{
+    marginVertical:10*scale,
+    backgroundColor:'#d9d9d9',
+    padding:8*scale,
+    borderRadius:10*scale,
+    marginHorizontal:10*scale
+  }
 });

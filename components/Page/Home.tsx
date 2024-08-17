@@ -9,6 +9,7 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import React, {useState} from 'react';
+import Logo from '../../assets/img/logo';
 const {width} = Dimensions.get('window');
 const scale = width / 320;
 
@@ -20,10 +21,11 @@ const Home = ({navigation}) => {
 
   const [text, setText] = useState('');
   const [loading, setLoading] = useState(false); 
+  const [error, setError] = useState(''); // New state for error handling
 
   const handleSubmit = async () => {
     setLoading(true); 
-    
+    setError(''); // Reset the error before starting the request
 
     try {
       const response = await fetch(
@@ -32,15 +34,15 @@ const Home = ({navigation}) => {
       const data = await response.json();
       console.log(data);
       if (response.ok) {
-        const percentage= data.student_data.TOTAL_PERC
-        const name =data.student_data.Name
-        const rollNo =data.student_data.Roll_no
-        navigation.navigate('Check',{percentage,name,rollNo,text})
-
+        const percentage= data.student_data.TOTAL_PERC;
+        const name = data.student_data.Name;
+        const rollNo = data.student_data.Roll_no;
+        navigation.navigate('Check',{percentage,name,rollNo,text});
       } else {
-        console.error(data.error); 
+        setError(data.error || 'An error occurred. Please try again.'); // Set error message
       }
     } catch (error) {
+      setError('Error fetching data. Please check your connection and try again.'); // Handle network errors
       console.error('Error fetching data:', error);
     } finally {
       setLoading(false); 
@@ -56,9 +58,13 @@ const Home = ({navigation}) => {
             styles.uppperBar,
             {backgroundColor: uppperBarBackgroundColor},
           ]}>
-          <Text style={[styles.txt, {color: color}]}>ATTENDANCE TY F</Text>
+          <Text style={[styles.txt, {color: color}]}>ATTENDANCE</Text>
         </View>
         <View style={[styles.body]}>
+          <View style={styles.logo}>
+
+        <Logo/>
+          </View>
           <TextInput
             onChangeText={setText}
             value={text}
@@ -79,10 +85,12 @@ const Home = ({navigation}) => {
                 {loading ? 'Loading...' : 'Check'}
               </Text>
             </TouchableOpacity>
-            
           </View>
           {loading ? (
             <ActivityIndicator size="large" color={color} />
+          ) : null}
+          {error ? ( // Display error message if it exists
+            <Text style={styles.errorText}>{error}</Text>
           ) : null}
         </View>
       </ScrollView>
@@ -106,6 +114,7 @@ const styles = StyleSheet.create({
   body: {
     flex: 11,
     alignItems: 'center',
+    justifyContent:'center'
   },
   container: {
     flex: 1,
@@ -115,7 +124,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   srn: {
-    marginTop: 100*scale,
+    marginTop: 30*scale,
     borderWidth: 1*scale,
     borderRadius: 10*scale,
     width: '50%',
@@ -137,10 +146,13 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
   },
-  percent: {
-    flex: 2,
+  errorText: {
+    color: 'red',
+    marginTop: 20*scale,
+    textAlign: 'center',
+    fontSize: 14*scale,
   },
-  perTxt: {
-    fontSize: 150 * scale,
-  },
+  logo:{
+    marginTop:70*scale,
+ }
 });

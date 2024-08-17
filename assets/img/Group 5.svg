@@ -1,0 +1,36 @@
+<svg width="223" height="140" viewBox="0 0 223 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_b_66_36)">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M130.851 71.6C130.851 81.0441 123.531 88.7 114.501 88.7C105.471 88.7 98.1507 81.0441 98.1507 71.6C98.1507 62.1559 105.471 54.5 114.501 54.5C123.531 54.5 130.851 62.1559 130.851 71.6ZM125.401 71.6C125.401 77.896 120.521 83 114.501 83C108.481 83 103.601 77.896 103.601 71.6C103.601 65.304 108.481 60.2 114.501 60.2C120.521 60.2 125.401 65.304 125.401 71.6Z" fill="#21005D"/>
+<path d="M114.501 97.25C96.858 97.25 81.8259 108.161 76.0999 123.447C77.4948 124.896 78.9642 126.266 80.5016 127.551C84.7655 113.517 98.1417 102.95 114.501 102.95C130.86 102.95 144.236 113.517 148.5 127.551C150.037 126.266 151.507 124.896 152.902 123.447C147.175 108.161 132.143 97.25 114.501 97.25Z" fill="#21005D"/>
+</g>
+<g filter="url(#filter1_b_66_36)">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M184.851 51.6C184.851 61.0441 177.531 68.7 168.501 68.7C159.471 68.7 152.151 61.0441 152.151 51.6C152.151 42.1559 159.471 34.5 168.501 34.5C177.531 34.5 184.851 42.1559 184.851 51.6ZM179.401 51.6C179.401 57.896 174.521 63 168.501 63C162.481 63 157.601 57.896 157.601 51.6C157.601 45.304 162.481 40.2 168.501 40.2C174.521 40.2 179.401 45.304 179.401 51.6Z" fill="#21005D"/>
+<path d="M168.501 77.25C150.858 77.25 135.826 88.161 130.1 103.447C131.495 104.896 132.964 106.266 134.502 107.551C138.766 93.5169 152.142 82.95 168.501 82.95C184.86 82.95 198.236 93.5169 202.5 107.551C204.037 106.266 205.507 104.896 206.902 103.447C201.175 88.161 186.143 77.25 168.501 77.25Z" fill="#21005D"/>
+</g>
+<g filter="url(#filter2_b_66_36)">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M70.8507 50.6C70.8507 60.0441 63.5305 67.7 54.5007 67.7C45.4708 67.7 38.1507 60.0441 38.1507 50.6C38.1507 41.1559 45.4708 33.5 54.5007 33.5C63.5305 33.5 70.8507 41.1559 70.8507 50.6ZM65.4007 50.6C65.4007 56.896 60.5206 62 54.5007 62C48.4808 62 43.6007 56.896 43.6007 50.6C43.6007 44.304 48.4808 39.2 54.5007 39.2C60.5206 39.2 65.4007 44.304 65.4007 50.6Z" fill="#21005D"/>
+<path d="M54.5007 76.25C36.858 76.25 21.8259 87.161 16.0999 102.447C17.4948 103.896 18.9642 105.266 20.5016 106.551C24.7655 92.5169 38.1417 81.95 54.5007 81.95C70.8596 81.95 84.2358 92.5169 88.4997 106.551C90.0372 105.266 91.5066 103.896 92.9015 102.447C87.1754 87.161 72.1434 76.25 54.5007 76.25Z" fill="#21005D"/>
+</g>
+<path d="M146.5 17.5C146.5 25.8531 139.94 32.5 132 32.5C124.06 32.5 117.5 25.8531 117.5 17.5C117.5 9.14692 124.06 2.5 132 2.5C139.94 2.5 146.5 9.14692 146.5 17.5Z" stroke="#21005D" stroke-width="5" stroke-linejoin="bevel"/>
+<path d="M106.5 17.5C106.5 25.8531 99.9403 32.5 92 32.5C84.0597 32.5 77.5 25.8531 77.5 17.5C77.5 9.14692 84.0597 2.5 92 2.5C99.9403 2.5 106.5 9.14692 106.5 17.5Z" stroke="#21005D" stroke-width="5" stroke-linejoin="bevel"/>
+<defs>
+<filter id="filter0_b_66_36" x="56" y="22" width="117" height="122" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feGaussianBlur in="BackgroundImageFix" stdDeviation="2"/>
+<feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_66_36"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_66_36" result="shape"/>
+</filter>
+<filter id="filter1_b_66_36" x="110" y="2" width="117" height="122" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feGaussianBlur in="BackgroundImageFix" stdDeviation="2"/>
+<feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_66_36"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_66_36" result="shape"/>
+</filter>
+<filter id="filter2_b_66_36" x="-4" y="1" width="117" height="122" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feGaussianBlur in="BackgroundImageFix" stdDeviation="2"/>
+<feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_66_36"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_66_36" result="shape"/>
+</filter>
+</defs>
+</svg>

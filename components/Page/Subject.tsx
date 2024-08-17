@@ -50,13 +50,13 @@ const Subject = ({route}) => {
     <View style={[styles.container, {backgroundColor: backgroundColor}]}>
       <View
         style={[styles.uppperBar, {backgroundColor: uppperBarBackgroundColor}]}>
-        <Text style={[styles.txt, {color: '#ffffff'}]}>ATTENDENCE TY F</Text>
+        <Text style={[styles.txt, {color: '#ffffff'}]}>ATTENDENCE</Text>
       </View>
       <View style={styles.body}>
         <View style={styles.detailBar}>
-          <Text style={styles.txt2}>Name : {name}</Text>
-          <Text style={styles.txt2}>Srn : {text}</Text>
-          <Text style={styles.txt2}>Roll No : {rollNo}</Text>
+          <Text style={styles.txt2}>Name: {name}</Text>
+          <Text style={styles.txt2}>SRN: {text}</Text>
+          <Text style={styles.txt2}>Roll No: {rollNo}</Text>
         </View>
         <AnimatedCircularProgress
           size={200 * scale}
@@ -120,6 +120,7 @@ const styles = StyleSheet.create({
   txt: {
     fontSize: 25 * scale,
     fontWeight: 'bold',
+    paddingVertical:25*scale
   },
   body: {
     flex: 11,

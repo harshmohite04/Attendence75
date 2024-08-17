@@ -1,4 +1,4 @@
-package com.attendence
+package com.innov8ture.attendencemanager
 
 import android.app.Application
 import com.facebook.react.PackageList

@@ -1,4 +1,4 @@
-package com.attendence
+package com.innov8ture.attendencemanager
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate

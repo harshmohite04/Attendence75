@@ -10,13 +10,25 @@ const Check = ({navigation, route}) => {
   return (
     <View style={styles.container}>
       <View style={[styles.uppperBar]}>
-        <Text style={[styles.txt]}>ATTENDANCE TY F</Text>
+        <Text style={[styles.txt]}>ATTENDANCE</Text>
       </View>
       <View style={styles.body}>
         <View style={styles.detailBar}>
-          <Text style={styles.txt2}>Name : {name}</Text>
-          <Text style={styles.txt2}>Srn : {text}</Text>
-          <Text style={styles.txt2}>Roll No : {rollNo}</Text>
+          <View style={styles.row}>
+          <Text style={styles.txt2}>Name: </Text>
+          <Text style={styles.txt3}>{name}</Text>
+          </View>
+
+          <View style={styles.row}>
+
+          <Text style={styles.txt2}>SRN: </Text>
+          <Text style={styles.txt3}>{text}</Text>
+          </View>
+          <View style={styles.row}>
+
+          <Text style={styles.txt2}>Roll No: </Text>
+          <Text style={styles.txt3}>{rollNo}</Text>
+          </View>
         </View>
 
         <AnimatedCircularProgress
@@ -80,10 +92,7 @@ const styles = StyleSheet.create({
       borderRadius: 10 * scale,
       marginTop:30*scale
     },
-    txt2: {
-      color: '#ffffff',
-      fontSize: 15 * scale,
-    },
+    
     innerPer: {
       fontSize: 70 * scale,
       color: '#000000',
@@ -109,6 +118,19 @@ const styles = StyleSheet.create({
       text: {
         color: '#000000',
         fontSize: 15 * scale,
+      },
+      row:{
+        flexDirection:'row'
+      },
+      txt2: {
+        color: '#ffffff',
+        fontSize: 15 * scale,
+        fontWeight:'700'
+      },
+      txt3: {
+        color: '#ffffff',
+        fontSize: 15 * scale,
+        
       },
   });
   
